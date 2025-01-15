@@ -2,18 +2,18 @@ package filmProject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class UserOperations implements Operation {
     private Scanner scan = new Scanner(System.in);
-    private Map<String, User> users = new HashMap<>();
-    //Uygulamada tanimli olan create edilmis kullanicilari ututuyor.
+    private Map<String, User> usersMap = new HashMap<>();
+    //Uygulamada tanimli olan create edilmis kullanicilari tutuyor.
 
     public UserOperations() {
+       //Default bir user tanimladik.
         String userName = "admin";
         String password = "1234";
-        users.put(userName, new User(userName, password, UserType.ADMIN));
+        usersMap.put(userName, new User(userName, password, UserType.ADMIN));
     }
 
     public User login() {
@@ -26,7 +26,7 @@ public class UserOperations implements Operation {
             String userName = scan.nextLine();
             System.out.println("Lütfen sifrenizi giriniz : ");
             String password = scan.nextLine();
-            if (!users.containsKey(userName) || !users.get(userName).getPassword().equals(password)) {
+            if (!usersMap.containsKey(userName) || !usersMap.get(userName).getPassword().equals(password)) {
                 System.out.println("Gecersiz kullanici adi veya sifre !");
 
                 do {
@@ -47,7 +47,7 @@ public class UserOperations implements Operation {
                 } while (secim != 2 && secim != 1);
 
             } else {
-                user = users.get(userName);
+                user = usersMap.get(userName);
                 System.out.println("Basarili giris yapildi.");
                 break;
             }
@@ -59,7 +59,7 @@ public class UserOperations implements Operation {
     @Override
     public void list() {
         System.out.println("Kayitli kullanicilar : ");
-        for (String userName : users.keySet()) {
+        for (String userName : usersMap.keySet()) {
             System.out.println(userName);
         }
     }
@@ -72,7 +72,7 @@ public class UserOperations implements Operation {
         String userName;
         do {
             userName = scan.nextLine();
-            if (users.containsKey(userName)) {
+            if (usersMap.containsKey(userName)) {
                 System.out.println("Var olan bir kullanici adi, lütfen yeni bir kullanici ismi deneyin !");
             } else {
                 break;
@@ -92,9 +92,8 @@ public class UserOperations implements Operation {
             }
         } while (true);
 
-        User user = new User(userName, password, UserType.USER);
-        users.put(userName, user);
-
+        User yeniKullanici = new User(userName, password, UserType.NORMAL_USER);
+        usersMap.put(userName, yeniKullanici);
     }
 
     @Override
@@ -103,8 +102,8 @@ public class UserOperations implements Operation {
 
         do {
             String userName = scan.nextLine();
-            if (users.containsKey(userName)) {
-                users.remove(userName);
+            if (usersMap.containsKey(userName)) {
+                usersMap.remove(userName);
                 break;
             } else {
                 System.out.println("Sectiginiz kullanici sistemde kayitli degil ,  lütfen tekrar giriniz : ");

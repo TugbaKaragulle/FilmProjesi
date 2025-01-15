@@ -1,5 +1,5 @@
 package filmProject;
 
 public enum UserType {
-    ADMIN,USER;
+    ADMIN, NORMAL_USER;
 }
