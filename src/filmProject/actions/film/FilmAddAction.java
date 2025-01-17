@@ -27,10 +27,10 @@ public class FilmAddAction extends Action {
         System.out.println(GREEN + "Lütfen eklemek istediginiz Filmi giriniz : " + RESET);
         String yeniFilm = scan.nextLine();
         if (films.contains(yeniFilm)) {
-            System.out.println(RED +BOLD+ "Listede zaten var olan bir film , tekrar eklenemez!" + RESET);
+            System.out.println(RED + BOLD + "Listede zaten var olan bir film , tekrar eklenemez!" + RESET);
         } else {
             films.add(yeniFilm);
-            System.out.println(BLUE+BOLD+"Film basari ile eklendi. "+RESET);
+            System.out.println(BLUE + BOLD + "Film basari ile eklendi. " + RESET);
         }
     }
 }
