@@ -5,6 +5,7 @@ import filmProject.actions.film.FilmAddAction;
 import filmProject.actions.film.FilmDeleteAction;
 import filmProject.actions.film.FilmListAction;
 import filmProject.actions.game.GameStartAction;
+import filmProject.actions.game.GameStartNew;
 import filmProject.actions.user.UserAddAction;
 import filmProject.actions.user.UserDeleteAction;
 import filmProject.actions.user.UserListAction;
@@ -44,7 +45,7 @@ public class Runner {
         Action userDeleteAction = new UserDeleteAction(BOLD + "Kullanici silme" + RESET, usersMap);
 
         // Oyun ile ilgili islemler icin Action objeleri olusturuldu
-        Action gameAction = new GameStartAction(RED + "Oyun" + RESET, films);
+        Action gameAction = new GameStartNew(RED + "Oyun" + RESET, films);
 
         // Action objeleri kullanici tipine gore gruplanip hashmap'de eklendi. Boylece login olan kullanicinin tipine
         // gore yapabilecegi islemler listelenecek asagida
