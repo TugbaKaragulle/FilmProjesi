@@ -5,7 +5,7 @@ import filmProject.actions.Action;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameStartNew extends Action {
+public class GameStartNewAction extends Action {
     private final List<String> films;
 
     public static final String RESET = "\u001B[0m";
@@ -19,11 +19,12 @@ public class GameStartNew extends Action {
     private Scanner scan = new Scanner(System.in);
     int filmNo;
 
-    public GameStartNew(String menuName, List<String> films) {
+    public GameStartNewAction(String menuName, List<String> films) {
         super(menuName);
         this.films = films;
     }
 
+     //Oyun Kurallari
     @Override
     public void execute() {
         oyunuOyna(films);
