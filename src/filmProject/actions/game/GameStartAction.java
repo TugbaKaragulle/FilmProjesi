@@ -60,7 +60,7 @@ public class GameStartAction extends Action {
                 }
 
                 if (failed) {
-                    System.out.println("\u001B[1m" + "Kaybettiniz, Beklenen Film  : " + secilenFilm.toUpperCase() + RESET);
+                    System.out.println(BOLD + "Kaybettiniz, Beklenen Film  : " + secilenFilm.toUpperCase() + RESET);
                 }
                 break;
             } catch (Exception e) {
