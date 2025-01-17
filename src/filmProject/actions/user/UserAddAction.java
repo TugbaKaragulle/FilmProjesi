@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class UserAddAction extends Action {
     private Scanner scan = new Scanner(System.in);
     private final Map<String, User> usersMap;
+    // Hashmap'e son eklenen kullaniciyi tutmak icin kullanilir. Kullanici yaratma isleminde otomatik login icin gerekli
+    private User lastAddedUser;
 
 
     public UserAddAction(String menuName, Map<String, User> usersMap) {
@@ -47,5 +49,10 @@ public class UserAddAction extends Action {
 
         User yeniKullanici = new User(userName, password, UserType.NORMAL_USER);
         usersMap.put(userName, yeniKullanici);
+        this.lastAddedUser = yeniKullanici;
+    }
+
+    public User getLastAddedUser() {
+        return lastAddedUser;
     }
 }

@@ -16,10 +16,11 @@ public class UserListAction extends Action {
         this.usersMap = usersMap;
     }
 
+    //Kullanicilari görüntüleme / Listeleme Methodu
     @Override
     public void execute() {
         System.out.println("Kayitli kullanicilar : ");
-        for (String userName : usersMap.keySet()) {
+        for (String userName : usersMap.keySet()) {//Map`in icinde ki her bir elemana erismek icin
             System.out.println(userName);
         }
     }

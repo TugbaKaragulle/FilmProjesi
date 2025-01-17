@@ -1,6 +1,7 @@
 package filmProject.actions.user;
 
 import filmProject.User;
+import filmProject.UserType;
 import filmProject.actions.Action;
 
 import java.util.Map;
@@ -22,7 +23,11 @@ public class UserDeleteAction extends Action {
         do {
             String userName = scan.nextLine();
             if (usersMap.containsKey(userName)) {
-                usersMap.remove(userName);
+                if (!usersMap.get(userName).getUserType().equals(UserType.ADMIN)) {
+                    usersMap.remove(userName);
+                } else {
+                    System.out.println("Admin user silinemez !");
+                }
                 break;
             } else {
                 System.out.println("Sectiginiz kullanici sistemde kayitli degil ,  lütfen tekrar giriniz : ");
