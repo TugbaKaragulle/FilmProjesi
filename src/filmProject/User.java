@@ -5,6 +5,7 @@ public class User {
     private String password;
     private UserType userType;
 
+    //Constractor
     public User(String userName, String password, UserType userType) {
         this.userName = userName;
         this.password = password;
