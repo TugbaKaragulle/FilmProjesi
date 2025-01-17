@@ -4,8 +4,7 @@ import filmProject.actions.Action;
 import filmProject.actions.film.FilmAddAction;
 import filmProject.actions.film.FilmDeleteAction;
 import filmProject.actions.film.FilmListAction;
-import filmProject.actions.game.GameStartAction;
-import filmProject.actions.game.GameStartNew;
+import filmProject.actions.game.GameStartNewAction;
 import filmProject.actions.user.UserAddAction;
 import filmProject.actions.user.UserDeleteAction;
 import filmProject.actions.user.UserListAction;
@@ -45,7 +44,7 @@ public class Runner {
         Action userDeleteAction = new UserDeleteAction(BOLD + "Kullanici silme" + RESET, usersMap);
 
         // Oyun ile ilgili islemler icin Action objeleri olusturuldu
-        Action gameAction = new GameStartNew(RED + "Oyun" + RESET, films);
+        Action gameAction = new GameStartNewAction(RED + "Oyun" + RESET, films);
 
         // Action objeleri kullanici tipine gore gruplanip hashmap'de eklendi. Boylece login olan kullanicinin tipine
         // gore yapabilecegi islemler listelenecek asagida
@@ -70,15 +69,26 @@ public class Runner {
                 List<Action> loggedInUsersActions = userTypeActionsMap.get(loggedInUser.getUserType());
 
                 System.out.println();
+
+                //Menüyü otomatik bastiran kisim
                 System.out.println(RED + BOLD + "*** MENÜ ***" + RESET);
-                // Menu login olan kullanicinin tipine gore gerceklestirebilecegi islemler menu olarak listelendi
+                // Menu login olan kullanicinin tipine gore gerceklestirebilecegi islemler menu olarak listelendi(for i)
                 for (int i = 0; i < loggedInUsersActions.size(); i++) {
                     System.out.println(i + " - " + loggedInUsersActions.get(i).getMenuName());
+                   //Admin -action                        User Action
+                    //*** MENÜ ***                      //*** MENÜ ***
+                    //0 - Film ekleme                   //0 - Oyun
+                    //1 - Film listeleme                //1 - Kullanici Degistir
+                    //2 - Film silme
+                    //3 - Kullanici listeleme
+                    //4 - Kullanici silme
                 }
                 // Login olan kullanici, kullanici degistirebilmesi icin menuye secenek eklendi (son islem)
                 System.out.println(loggedInUsersActions.size() + BOLD + " - Kullanici Degistir" + RESET);
                 System.out.println();
 
+
+                //Switch case yerine dinamik method call
                 try {
                     // Menuden kullanici tercihi alindi
                     int tercih = scan.nextInt();
